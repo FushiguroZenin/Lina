@@ -17,9 +17,11 @@ export default function GetStartedPage() {
     email: '',
     password: '',
   })
+  
+// eslint-disable-next-line prefer-const
 
   const validate = () => {
-    let newErrors = { name: '', email: '', password: '' }
+    const newErrors = { name: '', email: '', password: '' }
     let isValid = true
 
     if (mode === 'signup' && form.name.trim().length < 2) {
