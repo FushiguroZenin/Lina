@@ -1,7 +1,6 @@
 import "./globals.css";
 import { Familjen_Grotesk } from 'next/font/google'
 import Navbar from '@/components/Navbar'
-import Hero from '@/components/Hero'
 import Footer from "@/components/Footer";
 
 

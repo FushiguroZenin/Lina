@@ -5,7 +5,7 @@ import ScrollMessageCarousel from '@/components/ScrollMessageCarousel'
 import Sponsors from '@/components/Sponsors'
 import WhyLina from '@/components/WhyLina'
 import CTA from '@/components/CTA'
-import Footer from '@/components/Footer'
+
 
 export default function Home() {
   return (
