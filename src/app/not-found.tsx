@@ -9,11 +9,6 @@ export default function NotFound() {
   const [count, setCount] = useState(5);
   const router = useRouter()
 
-  const countDown = () => {
-    setCount((prev) => prev - 1);
-    console.log(count);
-  }
-
   // Auto redirect after 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
