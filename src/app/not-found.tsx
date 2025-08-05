@@ -1,20 +1,39 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 
 export default function NotFound() {
+  const [count, setCount] = useState(5);
   const router = useRouter()
+
+  const countDown = () => {
+    setCount((prev) => prev - 1);
+    console.log(count);
+  }
 
   // Auto redirect after 5 seconds
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      router.push('/')
-    }, 5000)
+    const interval = setInterval(() => {
+      setCount((prev) => {
+        if(prev <= 1){
+          clearInterval(interval);
+          return 0;
+        } 
+        return prev - 1;
+      });
+    }, 1000);
 
-    return () => clearTimeout(timeout)
+    const timeout = setTimeout(() => {
+      router.push('/');
+    }, 5000); // 5 seconds
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
   }, [router])
 
   return (
@@ -47,7 +66,7 @@ export default function NotFound() {
         className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-300 max-w-md mb-8"
       >
         Looks like Lina took a wrong turn...  
-        <span className="text-blue-600 font-semibold">redirecting you in 5 seconds</span> 💨
+        <span className="text-blue-600 font-semibold">redirecting you in {count} seconds</span> 💨
       </motion.p>
 
       {/* Manual Button (in case auto-redirect fails) */}
